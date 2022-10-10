@@ -1,0 +1,69 @@
+.home-container {
+    margin: 0px 150px;
+    display: flex;
+    justify-content: space-between;
+    // justify-content: center;
+
+    .filters {
+        // margin: 10px 20px;
+        width: 250px;
+
+        .filter {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+    }
+    
+    .games {
+        justify-content: left;
+        max-width: 1350px;
+        // margin-top: 20px;
+
+        .game {
+            background-color: rgb(18, 18, 18);
+            max-width: 250px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+    
+            .card {
+                background-color: rgb(18, 18, 18);
+                color: white;
+                
+                .game-name {
+                    font-size: 16px;
+                    color: rgb(245, 245, 245);
+                }
+            }
+
+            .card-body {
+                padding: 5px;
+            }
+
+            .game-thumbnail {
+                height: 280px;
+                width: 250px;
+                
+            }
+
+            .game-thumbnail:hover {
+                opacity: 0.5;
+                filter: alpha(opacity=40);
+            }
+
+            .genre {
+                display: flex;
+
+                p {
+                    font-size: 9px;
+                    // border-radius: 5px;
+                    background-color: #1D5572;
+                    margin: 0px 1px;
+                    padding: 3px;
+                }
+            }
+        }
+    }
+}

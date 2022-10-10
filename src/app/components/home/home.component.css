@@ -1,0 +1,52 @@
+.home-container {
+  margin: 0px 150px;
+  display: flex;
+  justify-content: space-between;
+}
+.home-container .filters {
+  width: 250px;
+}
+.home-container .filters .filter {
+  color: white;
+  margin-bottom: 10px;
+}
+.home-container .games {
+  justify-content: left;
+  max-width: 1350px;
+}
+.home-container .games .game {
+  background-color: #121212;
+  max-width: 250px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.home-container .games .game .card {
+  background-color: #121212;
+  color: white;
+}
+.home-container .games .game .card .game-name {
+  font-size: 16px;
+  color: #f5f5f5;
+}
+.home-container .games .game .card-body {
+  padding: 5px;
+}
+.home-container .games .game .game-thumbnail {
+  height: 280px;
+  width: 250px;
+}
+.home-container .games .game .game-thumbnail:hover {
+  opacity: 0.5;
+  filter: alpha(opacity=40);
+}
+.home-container .games .game .genre {
+  display: flex;
+}
+.home-container .games .game .genre p {
+  font-size: 9px;
+  background-color: #1D5572;
+  margin: 0px 1px;
+  padding: 3px;
+}

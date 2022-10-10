@@ -1,28 +1,50 @@
-<div class="filters">
-    <form>
-        <select class="form-select" aria-label="Default select example" panelClass="sort-select" [(ngModel)]="sort" name="select">
-            <option selected>Open this select menu</option>
+<div class="home-container">
+
+    <div class="row row-cols-1 row-cols-md-5 g-2 games">
+      <ng-container *ngFor="let game of games">
+        <div class="col game" (click)="openGameDetails(game.id)">
+          <div class="card h-100 game-thumb-container">
+            <img 
+              *ngIf="game.background_image"
+              src="{{game.background_image}}" 
+              class="card-img-top game-thumbnail" 
+              alt="thumbnail"
+            >
+            <p *ngIf="!game.background_image">No Image</p>
+            <div class="card-body">
+              <h5 class="card-title game-name">{{game.name}}</h5>
+              <div class="genre">
+                <ng-container *ngFor="let genre of game.genres">
+                  <p>{{genre.name}}</p>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="filters">
+      <!-- <h6 class="filter">Filters</h6> -->
+      <form>
+          <select 
+            class="form-select" 
+            aria-label="Default select example" 
+            panelClass="sort-select" 
+            [(ngModel)]="sort" 
+            name="select"
+            (change)="searchGames(sort)"
+          >
+            <option value="" disabled selected hidden>Filters</option>
             <option value="name">Name</option>
-            <option value="released">Released</option>
-            <option value="added">Added</option>
-            <option value="created">Created</option>
-            <option value="updated">Updated</option>
-            <option value="rating">Rating</option>
+            <option value="-released">Released</option>
+            <option value="-added">Added</option>
+            <option value="-created">Created</option>
+            <option value="-updated">Updated</option>
+            <option value="-rating">Rating</option>
             <option value="metacritic">Metacritic</option>
-        </select>
-    </form>
+          </select>
+      </form>
+  </div>
 </div>
 
-<div class="games">
-    <div class="game">
-        <div class="game-thumb-container">
-            <img src="https://media.rawg.io/media/screenshots/1ac/1ac19f31974314855ad7be266adeb500.jpg" alt="thumbnail" class="game-thumbnail">
-        </div>
-        <div class="game-description">
-            <p class="game-name"></p>
-            <div class="game-platforms">
-                <img class="game-platform" src="https://media.rawg.io/media/screenshots/1ac/1ac19f31974314855ad7be266adeb500.jpg" alt="slug">
-            </div>
-        </div>
-    </div>
-</div>
