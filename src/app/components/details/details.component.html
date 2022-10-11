@@ -1,25 +1,11 @@
+<div *ngIf="loaderService.isLoading | async" class="loader-container">
+    <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+    <mat-spinner style="top: 40%; left:50%;"></mat-spinner>
+</div>
 <div class="details">
     <div class="game-content">
         <h1>{{game.name}}</h1>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <ng-container *ngFor="let indexZero of indexZero" > 
-                    <img *ngIf="indexZero.num == 0" 
-                        src={{indexZero.image}} 
-                        alt="{{indexZero.id}}" 
-                        data-bs-target="#carouselExampleIndicators" 
-                        attr.data-bs-slide-to="{{indexZero.num}}" 
-                        class="active" 
-                        aria-current="true"
-                    >
-                    <img *ngIf="indexZero.num != 0"
-                        src={{indexZero.image}} 
-                        alt="{{indexZero.id}}" 
-                        data-bs-target="#carouselExampleIndicators" 
-                        attr.data-bs-slide-to="{{indexZero.num}}"
-                    >
-                </ng-container>
-            </div>
             <div class="carousel-inner">
                 <ng-container *ngFor="let indexZero of indexZero" >
                     <div class="carousel-item active" *ngIf="indexZero.num == 0">
@@ -38,24 +24,42 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-        </div>
-    </div>
-</div>
 
-
-<!-- <div class="details">
-    <div class="game-banner">
-        <img src="https://media.rawg.io/media/screenshots/d40/d4044a9177d3ccfb9d9c0550cd3c9104.jpg" alt="bg">
-    </div>
-    <div class="game-content">
-        <div class="details-wrapper">
-            <div class="game-header">
-                <h1 class="game-header-title">Game Name</h1>
-                <h2 class="geme-header-release-date">asd</h2>
-                <p class="game-header-genres">
-                    <span>rpg</span>
-                </p>
+            <div class="carousel-indicators">
+                <ng-container *ngFor="let indexZero of indexZero" > 
+                    <img *ngIf="indexZero.num == 0" 
+                        src={{indexZero.image}} 
+                        alt="{{indexZero.id}}" 
+                        data-bs-target="#carouselExampleIndicators" 
+                        attr.data-bs-slide-to="{{indexZero.num}}" 
+                        class="active" 
+                        aria-current="true"
+                    >
+                    <img *ngIf="indexZero.num != 0"
+                        src={{indexZero.image}} 
+                        alt="{{indexZero.id}}" 
+                        data-bs-target="#carouselExampleIndicators" 
+                        attr.data-bs-slide-to="{{indexZero.num}}"
+                    >
+                </ng-container>
             </div>
         </div>
-    </div>  
-</div> -->
+
+        <div>
+                <div class="game-description" #textbox [class.show-less]="expand === false" [innerHTML]="game.description"></div>
+            <a
+              (click)="toggle()"
+              *ngIf="
+                textbox.offsetHeight < textbox.scrollHeight ||
+                (expand === true && textbox.offsetHeight > 40)
+              "
+            >{{ anchor }}</a>
+
+        </div>
+        
+        <div class="game-specifications">
+            <h2>Specifications</h2>
+        </div>
+        
+    </div>
+</div>

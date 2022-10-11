@@ -1,3 +1,7 @@
+<div *ngIf="loaderService.isLoading | async" class="loader-container">
+  <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+  <mat-spinner style="top: 40%; left:50%;"></mat-spinner>
+</div>
 <nav class="navbar fixed-top navbar-expand-lg">
     <div class="container-fluid">
       <img class="logo" src="../assets/images/logo.png" alt="" routerLink="/">

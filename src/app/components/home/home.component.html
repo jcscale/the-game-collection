@@ -1,7 +1,7 @@
 <div class="home-container">
 
     <div class="row row-cols-1 row-cols-md-5 g-2 games">
-      <ng-container *ngFor="let game of games">
+      <ng-container *ngFor="let game of games | paginate: { itemsPerPage: 20, currentPage: p, totalItems: total }">
         <div class="col game" (click)="openGameDetails(game.id)">
           <div class="card h-100 game-thumb-container">
             <img 
@@ -9,6 +9,7 @@
               src="{{game.background_image}}" 
               class="card-img-top game-thumbnail" 
               alt="thumbnail"
+              
             >
             <p *ngIf="!game.background_image">No Image</p>
             <div class="card-body">
@@ -35,7 +36,7 @@
             name="select"
             (change)="searchGames(sort)"
           >
-            <option value="" disabled selected hidden>Filters</option>
+            <option value="" disabled selected hidden>Order by:</option>
             <option value="name">Name</option>
             <option value="-released">Released</option>
             <option value="-added">Added</option>
@@ -47,4 +48,10 @@
       </form>
   </div>
 </div>
+
+<div class="pagination">
+  <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+</div>
+
+
 

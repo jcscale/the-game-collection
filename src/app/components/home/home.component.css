@@ -50,3 +50,14 @@
   margin: 0px 1px;
   padding: 3px;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.pagination ::ng-deep .ngx-pagination li {
+  color: rgba(245, 245, 245, 0.6);
+}
+.pagination ::ng-deep .ngx-pagination li:hover {
+  color: black;
+}
