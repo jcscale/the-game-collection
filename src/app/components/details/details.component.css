@@ -34,7 +34,7 @@
   height: 50px;
 }
 .details .game-content .carousel .carousel-inner .carousel-item img {
-  height: 600px;
+  height: 100%;
 }
 .details .game-content .game-description {
   margin-top: 100px;
@@ -64,9 +64,34 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+.details .game-content .game-platforms h2 {
+  color: white;
+  font-size: 16px;
+  line-height: 25px;
+  letter-spacing: -0.2px;
+}
+.details .game-content .game-platforms .platforms {
+  display: flex;
+  justify-content: center;
+  background-color: #202020;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+}
+.details .game-content .game-platforms .platforms img {
+  width: 30px;
+  height: 30px;
+  margin: 0px 10px;
+  transition: all 0.2s ease-in-out;
+}
+.details .game-content .game-platforms .platforms img:hover {
+  transform: scale(1.5);
+}
 .details .game-content .game-specifications h2 {
   color: white;
   font-size: 16px;
   line-height: 25px;
   letter-spacing: -0.2px;
+}
+.details .game-content .game-specifications .minimum {
+  color: white;
 }

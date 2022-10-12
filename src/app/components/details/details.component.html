@@ -7,14 +7,56 @@
         <h1>{{game.name}}</h1>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <ng-container *ngFor="let indexZero of indexZero" >
+                <!-- <ng-container *ngFor="let indexZero of indexZero" >
                     <div class="carousel-item active" *ngIf="indexZero.num == 0">
                         <img src={{indexZero.image}} alt="{{indexZero.id}}" class="d-block w-100">
                     </div>
                     <div class="carousel-item" *ngIf="indexZero.num != 0">
                         <img src={{indexZero.image}} alt="{{indexZero.id}}" class="d-block w-100">
                     </div>
+                </ng-container> -->
+                <ng-container *ngIf="game.trailers.length!=0">
+                    <ng-container *ngFor="let preview of screenshots_trailers">
+                        <div class="carousel-item active" *ngIf="preview.num == 0 && preview.data">
+                            <video
+                                class="game-trailer d-block w-100"
+                                width="100%"
+                                height="100%"
+                                controls="controls"
+                            >
+                                <source src="{{ preview.data?.max }}" type="video/mp4"/>
+
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                        <div class="carousel-item" *ngIf="preview.num != 0 && preview.data">
+                            <video
+                                class="game-trailer d-block w-100"
+                                width="100%"
+                                controls="controls" 
+                            >
+                                <source src="{{ preview.data?.max }}" type="video/mp4"/>
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </ng-container>
                 </ng-container>
+
+                <ng-container *ngIf="game.trailers.length == 0">
+                    <ng-container *ngFor="let preview of screenshots_trailers">
+                        <div class="carousel-item active" *ngIf="preview.num==0">
+                            <img src={{preview.image}} alt="{{preview.id}}" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item" *ngIf="preview.num != 0">
+                            <img src={{preview.image}} alt="{{preview.id}}" class="d-block w-100">
+                        </div>
+                    </ng-container>
+                </ng-container>
+
+                
+                    
+
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -25,7 +67,7 @@
               <span class="visually-hidden">Next</span>
             </button>
 
-            <div class="carousel-indicators">
+            <!-- <div class="carousel-indicators">
                 <ng-container *ngFor="let indexZero of indexZero" > 
                     <img *ngIf="indexZero.num == 0" 
                         src={{indexZero.image}} 
@@ -42,6 +84,47 @@
                         attr.data-bs-slide-to="{{indexZero.num}}"
                     >
                 </ng-container>
+            </div> -->
+            <div class="carousel-indicators">
+                <ng-container *ngIf="game.trailers?.length">
+                    <ng-container *ngFor="let preview of screenshots_trailers">
+                            <img 
+                                *ngIf="preview.num == 0 && preview.data" 
+                                src="{{preview.preview}}" 
+                                alt="{{preview.id}}"
+                                data-bs-target="#carouselExampleIndicators" 
+                                attr.data-bs-slide-to="{{preview.num}}"
+                                class="active" 
+                                aria-current="true"
+                            >
+                            <img 
+                                *ngIf="preview.num != 0 && preview.data" 
+                                src="{{preview.preview}}" 
+                                alt="{{preview.id}}"
+                                data-bs-target="#carouselExampleIndicators" 
+                                attr.data-bs-slide-to="{{preview.num}}"
+                            >
+                    </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="game.trailers.length == 0">
+                    <ng-container *ngFor="let preview of screenshots_trailers">
+                        <img *ngIf="preview.num == 0" 
+                            src={{preview.image}} 
+                            alt="{{preview.id}}" 
+                            data-bs-target="#carouselExampleIndicators" 
+                            attr.data-bs-slide-to="{{preview.num}}" 
+                            class="active" 
+                            aria-current="true"
+                        >
+                        <img *ngIf="preview.num != 0"
+                            src={{preview.image}} 
+                            alt="{{preview.id}}" 
+                            data-bs-target="#carouselExampleIndicators" 
+                            attr.data-bs-slide-to="{{preview.num}}"
+                        >
+                    </ng-container>
+                </ng-container>
             </div>
         </div>
 
@@ -56,9 +139,27 @@
             >{{ anchor }}</a>
 
         </div>
+
+        <div class="game-platforms">
+            <h2>Platforms</h2>  
+            <div class="platforms">
+                <img 
+                *ngFor="let gamePlatform of game.parent_platforms"
+                class="game-platoform"
+                src="../../../assets/images/{{gamePlatform.platform.slug}}.svg" 
+                alt="{{gamePlatform.platform.slug}}"
+            >
+            </div>
+        </div>
         
         <div class="game-specifications">
             <h2>Specifications</h2>
+            <div class="requirements">
+                <div class="minimum">
+                    {{platform.requirements.recommended}}
+                </div>
+                <div class="recommended"></div>
+            </div>
         </div>
         
     </div>
