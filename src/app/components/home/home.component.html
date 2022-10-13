@@ -1,6 +1,29 @@
-<div class="home-container">
+<div class="home-container" *ngIf="games.length>0">
 
-    <div class="row row-cols-1 row-cols-md-5 g-2 games">
+  <div class="filters">
+    <!-- <h6 class="filter">Filters</h6> -->
+    <form>
+        <select 
+          class="form-select" 
+          aria-label="Default select example" 
+          panelClass="sort-select" 
+          [(ngModel)]="sort" 
+          name="select"
+          (change)="searchGames(sort)"
+        >
+          <option value="" disabled selected hidden>Order by:</option>
+          <option value="name">Name</option>
+          <option value="-released">Released</option>
+          <option value="-added">Added</option>
+          <option value="-created">Created</option>
+          <option value="-updated">Updated</option>
+          <option value="-rating">Rating</option>
+          <option value="metacritic">Metacritic</option>
+        </select>
+    </form>
+  </div>
+
+    <div class="row row-cols-1 row-cols-md-5 games">
       <ng-container *ngFor="let game of games | paginate: { itemsPerPage: 20, currentPage: p, totalItems: total }">
         <div class="col game" (click)="openGameDetails(game.id)">
           <div class="card h-100 game-thumb-container">
@@ -25,31 +48,10 @@
       </ng-container>
     </div>
 
-    <div class="filters">
-      <!-- <h6 class="filter">Filters</h6> -->
-      <form>
-          <select 
-            class="form-select" 
-            aria-label="Default select example" 
-            panelClass="sort-select" 
-            [(ngModel)]="sort" 
-            name="select"
-            (change)="searchGames(sort)"
-          >
-            <option value="" disabled selected hidden>Order by:</option>
-            <option value="name">Name</option>
-            <option value="-released">Released</option>
-            <option value="-added">Added</option>
-            <option value="-created">Created</option>
-            <option value="-updated">Updated</option>
-            <option value="-rating">Rating</option>
-            <option value="metacritic">Metacritic</option>
-          </select>
-      </form>
-  </div>
+    
 </div>
 
-<div class="pagination">
+<div class="pagination" *ngIf="games.length>0">
   <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
 </div>
 

@@ -14,6 +14,7 @@ export interface Game {
     screenshots: Array<Screenshots>;
     trailers: Array<Trailer>;
     platforms:any;
+    developers:Array<Developers>;
 }
 
 export interface APIResponse<T> {
@@ -52,4 +53,9 @@ interface Trailer {
     data: {
         max: string;
     }
+}
+
+interface Developers {
+    name:string,
+    image:string,
 }

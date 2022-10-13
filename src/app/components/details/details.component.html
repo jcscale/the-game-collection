@@ -2,20 +2,13 @@
     <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
     <mat-spinner style="top: 40%; left:50%;"></mat-spinner>
 </div>
-<div class="details">
+<div class="details" *ngIf="game">
+    <img src="{{game.background_image}}" alt="" class="game-bg-image">
     <div class="game-content">
         <h1>{{game.name}}</h1>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <!-- <ng-container *ngFor="let indexZero of indexZero" >
-                    <div class="carousel-item active" *ngIf="indexZero.num == 0">
-                        <img src={{indexZero.image}} alt="{{indexZero.id}}" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item" *ngIf="indexZero.num != 0">
-                        <img src={{indexZero.image}} alt="{{indexZero.id}}" class="d-block w-100">
-                    </div>
-                </ng-container> -->
-                <ng-container *ngIf="game.trailers.length!=0">
+                <ng-container *ngIf="game.trailers.length != 0">
                     <ng-container *ngFor="let preview of screenshots_trailers">
                         <div class="carousel-item active" *ngIf="preview.num == 0 && preview.data">
                             <video
@@ -40,6 +33,11 @@
                                 Your browser does not support the video tag.
                             </video>
                         </div>
+
+                        <div class="carousel-item" *ngIf="preview.num != 0 && !preview.data">
+                            <img src={{preview.image}} alt="{{preview.id}}" class="d-block w-100">
+                        </div>
+
                     </ng-container>
                 </ng-container>
 
@@ -54,10 +52,8 @@
                     </ng-container>
                 </ng-container>
 
-                
-                    
-
             </div>
+
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
@@ -67,43 +63,33 @@
               <span class="visually-hidden">Next</span>
             </button>
 
-            <!-- <div class="carousel-indicators">
-                <ng-container *ngFor="let indexZero of indexZero" > 
-                    <img *ngIf="indexZero.num == 0" 
-                        src={{indexZero.image}} 
-                        alt="{{indexZero.id}}" 
-                        data-bs-target="#carouselExampleIndicators" 
-                        attr.data-bs-slide-to="{{indexZero.num}}" 
-                        class="active" 
-                        aria-current="true"
-                    >
-                    <img *ngIf="indexZero.num != 0"
-                        src={{indexZero.image}} 
-                        alt="{{indexZero.id}}" 
-                        data-bs-target="#carouselExampleIndicators" 
-                        attr.data-bs-slide-to="{{indexZero.num}}"
-                    >
-                </ng-container>
-            </div> -->
             <div class="carousel-indicators">
-                <ng-container *ngIf="game.trailers?.length">
+                <ng-container *ngIf="game.trailers.length != 0">
                     <ng-container *ngFor="let preview of screenshots_trailers">
-                            <img 
-                                *ngIf="preview.num == 0 && preview.data" 
-                                src="{{preview.preview}}" 
-                                alt="{{preview.id}}"
-                                data-bs-target="#carouselExampleIndicators" 
-                                attr.data-bs-slide-to="{{preview.num}}"
-                                class="active" 
-                                aria-current="true"
-                            >
-                            <img 
-                                *ngIf="preview.num != 0 && preview.data" 
-                                src="{{preview.preview}}" 
-                                alt="{{preview.id}}"
-                                data-bs-target="#carouselExampleIndicators" 
-                                attr.data-bs-slide-to="{{preview.num}}"
-                            >
+                        <img 
+                            *ngIf="preview.num == 0 && preview.data" 
+                            src="{{preview.preview}}" 
+                            alt="{{preview.id}}"
+                            data-bs-target="#carouselExampleIndicators" 
+                            attr.data-bs-slide-to="{{preview.num}}"
+                            class="active" 
+                            aria-current="true"
+                        >
+                        <img 
+                            *ngIf="preview.num != 0 && preview.data" 
+                            src="{{preview.preview}}" 
+                            alt="{{preview.id}}"
+                            data-bs-target="#carouselExampleIndicators" 
+                            attr.data-bs-slide-to="{{preview.num}}"
+                        >
+
+                        <img *ngIf="preview.num != 0 && !preview.data"
+                            src={{preview.image}} 
+                            alt="{{preview.id}}" 
+                            data-bs-target="#carouselExampleIndicators" 
+                            attr.data-bs-slide-to="{{preview.num}}"
+                        >
+
                     </ng-container>
                 </ng-container>
 
@@ -152,7 +138,7 @@
             </div>
         </div>
         
-        <div class="game-specifications">
+        <div class="game-specifications" *ngIf="platform.requirements.recommended">
             <h2>Specifications</h2>
             <div class="requirements">
                 <div class="minimum">
@@ -162,5 +148,18 @@
             </div>
         </div>
         
+    </div>
+
+    <div class="developers">
+        <h4>Developers</h4>
+        <ul>
+            <li *ngFor="let developer of game.developers">
+                <div class="developers-profile">
+                    <div class="dev-image" *ngIf="developer.image != null"><img src="{{developer.image}}" alt=""></div>
+                    <div class="dev-name" *ngIf="developer.image != null">{{developer.name}}</div>
+                </div>
+                <!-- <div class="separator" *ngIf="developer.image != null"></div> -->
+            </li>
+        </ul>
     </div>
 </div>

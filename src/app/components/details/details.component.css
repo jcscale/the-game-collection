@@ -9,9 +9,21 @@
   opacity: 0.8;
   background-color: black;
 }
+.details {
+  margin-bottom: 20px;
+  display: flex;
+}
+.details .game-bg-image {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.1;
+  width: 100%;
+  bottom: 0%;
+  top: 1%;
+}
 .details .game-content {
   width: 1000px;
-  margin: 0px auto;
+  margin: 0px 20px 0px auto;
 }
 .details .game-content h1 {
   color: white;
@@ -28,10 +40,23 @@
 .details .game-content .carousel .carousel-indicators {
   position: relative;
   margin-top: 20px;
+  overflow-x: auto;
 }
 .details .game-content .carousel .carousel-indicators img {
   width: 100px;
   height: 50px;
+}
+.details .game-content .carousel .carousel-indicators::-webkit-scrollbar {
+  height: 10px;
+  /* height of horizontal scrollbar ← You're missing this */
+  width: 20px;
+  /* width of vertical scrollbar */
+  border: 1px solid #202020;
+  border-radius: 10px;
+}
+.details .game-content .carousel .carousel-indicators::-webkit-scrollbar-thumb:horizontal {
+  background-color: #202020;
+  border-radius: 10px;
 }
 .details .game-content .carousel .carousel-inner .carousel-item img {
   height: 100%;
@@ -92,6 +117,42 @@
   line-height: 25px;
   letter-spacing: -0.2px;
 }
+.details .game-content .game-specifications .requirements {
+  background-color: #202020;
+  padding: 20px;
+}
 .details .game-content .game-specifications .minimum {
   color: white;
+}
+.details .developers {
+  margin: 0px auto 0px 20px;
+  width: 300px;
+  background-color: #202020;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.details .developers h4 {
+  color: white;
+  text-align: center;
+}
+.details .developers li {
+  margin: 10px 0px;
+  list-style-type: none;
+}
+.details .developers li .developers-profile {
+  display: flex;
+  align-items: center;
+}
+.details .developers li .developers-profile .dev-image img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.details .developers li .developers-profile .dev-name {
+  margin-left: 10px;
+  color: white;
+}
+.details .developers li .separator {
+  width: 100%;
+  border: 0.5px solid #5a5a5a;
 }

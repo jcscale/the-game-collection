@@ -24,7 +24,7 @@ export class HttpService {
 
 
 
-    return this.http.get<APIResponse<Game>>(`${env.BASE_URL}/games?page=${page}`, {
+    return this.http.get<APIResponse<Game>>(`${env.BASE_URL}/games?page=${page}&page_size=36`, {
       params: params,
     });
   }
@@ -33,17 +33,20 @@ export class HttpService {
     const gameInfoRequest = this.http.get(`${env.BASE_URL}/games/${id}`);
     const gameTrailersRequest = this.http.get(`${env.BASE_URL}/games/${id}/movies`);
     const gameScreenshotsRequest = this.http.get(`${env.BASE_URL}/games/${id}/screenshots`);
+    const gameDevelopmentTeam = this.http.get(`${env.BASE_URL}/games/${id}/development-team`)
 
     return forkJoin({
       gameInfoRequest,
       gameScreenshotsRequest,
       gameTrailersRequest,
+      gameDevelopmentTeam,
     }).pipe(
       map((resp: any) => {
         return {
           ...resp['gameInfoRequest'],
           screenshots: resp['gameScreenshotsRequest']?.results,
           trailers: resp['gameTrailersRequest']?.results,
+          developers: resp['gameDevelopmentTeam']?.results,
         }
       })
     )
