@@ -150,6 +150,7 @@
         }
 
         .game-specifications {
+            margin-bottom: 20px;
 
             h2 {
                 color: white;
@@ -172,6 +173,7 @@
     .other-details {
         margin: 0px auto 0px 20px;
         width: 300px;
+        height: 50%;
         background-color: rgb(32, 32, 32);
         padding: 20px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -298,6 +300,182 @@
                 }
     
             }
+            
+        }
+    }
+
+    .similar-games {
+        margin-top: 50px;
+        margin-bottom: 20px;
+
+        h1 {
+            color: white;
+            // font-size: 16px;
+            line-height: 25px;
+            letter-spacing: -0.2px;
+        }
+        .games {
+            justify-content: space-between;
+            position: relative;
+            
+            .game-container {
+                position:relative;
+                float:left;
+                width:230px;
+                height:250px;
+                margin:10px;
+    
+                .game {
+                    cursor: pointer;
+                    border-radius: 12px;
+                    transition: all .1s ease-in-out;
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width:230px;
+                    height:250px;
+                    transition: 0.5s;
+    
+                    .card {
+                        background-color: #202020;
+                        color: white;
+        
+                        .name-rating {
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                        
+                        .game-name {
+                            font-size: 16px;
+                            color: rgb(245, 245, 245);
+                            margin-bottom: 3px;
+                        }
+        
+                        .green {
+                            color: green;
+                            font-size: 12px;
+                            padding: 2px 4px;
+                            border: 1px solid green;
+                            margin: 0px;
+                            max-height: 24px;
+                            border-radius: 5px;
+                        }
+        
+                        .yellow {
+                            color: yellow;
+                            font-size: 12px;
+                            padding: 2px 4px;
+                            border: 1px solid yellow;
+                            margin: 0px;
+                            max-height: 24px;
+                            border-radius: 5px;
+                        }
+        
+                        .orange {
+                            color: orange;
+                            font-size: 12px;
+                            padding: 2px 4px;
+                            border: 1px solid orange;
+                            margin: 0px;
+                            max-height: 24px;
+                            border-radius: 5px;
+                        }
+        
+                        .red {
+                            color: red;
+                            font-size: 12px;
+                            padding: 2px 4px;
+                            border: 1px solid red;
+                            margin: 0px;
+                            max-height: 24px;
+                            border-radius: 5px;
+                        }
+                    }
+        
+                    .card-body {
+                        padding: 5px;
+                        margin: 10px 0px;
+                        width: 100%;
+                    }
+        
+                    .game-thumbnail {
+                        width: 230px;
+                        min-height: 180px;
+                        // height: 248px;
+                        // max-height: 248px;
+                        
+                    }
+        
+                    .game-thumbnail:hover {
+                        opacity: 0.5;
+                        filter: alpha(opacity=40);
+                    }
+    
+                    .more-details {
+                        display: none;
+                        margin-top: 10px;
+                    }
+    
+                    .release-date {
+                        display: flex;
+                        justify-content: space-between;
+    
+                        .release-tag {
+                            font-size: 11px;
+                            margin: 0px 0px;
+                            color: hsla(0,0%,100%,.4);
+                        }
+    
+                        .release-date {
+                            font-size: 10px;
+                            margin: 0px 3px;
+                        }   
+                    }
+    
+                    
+        
+                    .genre {
+                        display: flex;
+                        justify-content: space-between;
+    
+                        .genre-tag {
+                            font-size: 11px;
+                            margin: 0px 0px;
+                            color: hsla(0,0%,100%,.4);
+                        }
+    
+                        .genre-name-container {
+                            display: flex;
+    
+                            .genre-name {
+                                font-size: 10px;
+                                margin: 0px 3px; 
+                            }
+                        }
+        
+                        
+                    }
+                }
+                
+                .game:hover{
+                    transform: scale(1.05);
+                    z-index:100;
+                    width:230px;
+                    height:290px;
+                    background: grey;
+                    
+                }
+    
+                .game:hover .more-details {
+                    display: block;
+                    // transition: all .5s ease-in-out;
+                    // transition: .5s;
+                }
+                
+            }
+    
+            
+    
             
         }
     }

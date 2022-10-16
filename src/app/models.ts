@@ -16,6 +16,7 @@ export interface Game {
     platforms:any;
     developers:Array<Developers>;
     stores:Array<Store>;
+    series:any;
 }
 
 export interface APIResponse<T> {

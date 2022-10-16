@@ -33,13 +33,15 @@ export class HttpService {
     const gameInfoRequest = this.http.get(`${env.BASE_URL}/games/${id}`);
     const gameTrailersRequest = this.http.get(`${env.BASE_URL}/games/${id}/movies`);
     const gameScreenshotsRequest = this.http.get(`${env.BASE_URL}/games/${id}/screenshots`);
-    const gameDevelopmentTeam = this.http.get(`${env.BASE_URL}/games/${id}/development-team`)
+    const gameDevelopmentTeam = this.http.get(`${env.BASE_URL}/games/${id}/development-team`);
+    const gameSameSeries = this.http.get(`${env.BASE_URL}/games/${id}/game-series`);
 
     return forkJoin({
       gameInfoRequest,
       gameScreenshotsRequest,
       gameTrailersRequest,
       gameDevelopmentTeam,
+      gameSameSeries
     }).pipe(
       map((resp: any) => {
         return {
@@ -47,6 +49,7 @@ export class HttpService {
           screenshots: resp['gameScreenshotsRequest']?.results,
           trailers: resp['gameTrailersRequest']?.results,
           developers: resp['gameDevelopmentTeam']?.results,
+          series: resp['gameSameSeries']?.results,
         }
       })
     )

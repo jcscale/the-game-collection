@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Game } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
@@ -16,9 +16,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
   game!: Game;
   routeSub: Subscription | undefined;
   gameSub: Subscription | undefined;
+  // detailSub: Subscription | undefined;
   indexZero: any[]= [];
   trailers:any[]=[];
-  screenshots_trailers:any;
+  screenshots_trailers:any[]=[];
   trailersLength:number=0;
   gamePlatforms:any;;
   platform:any;
@@ -29,7 +30,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private httpService: HttpService,
-    public loaderService: LoaderService
+    public loaderService: LoaderService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.gameId = params['id'];
       this.getGameDetails(this.gameId);
     });
+    this.screenshots_trailers.length=0;
   }
 
   getGameDetails(id: string): void {
@@ -80,6 +83,14 @@ export class DetailsComponent implements OnInit, OnDestroy {
           this.gameRating = this.game.metacritic;
         }, 1000);
       });
+  }
+
+  openGameDetails(id:string): void {
+    this.screenshots_trailers.length = 0;
+    this.trailers.length = 0;
+    this.indexZero.length = 0;
+    this.router.navigate(['details', id]);
+    
   }
 
   

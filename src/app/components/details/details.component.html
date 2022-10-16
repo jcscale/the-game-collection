@@ -125,18 +125,6 @@
             >{{ anchor }}</a>
 
         </div>
-
-        <!-- <div class="game-platforms">
-            <h2>Platforms</h2>  
-            <div class="platforms">
-                <img 
-                *ngFor="let gamePlatform of game.parent_platforms"
-                class="game-platoform"
-                src="../../../assets/images/{{gamePlatform.platform.slug}}.svg" 
-                alt="{{gamePlatform.platform.slug}}"
-            >
-            </div>
-        </div> -->
         
         <div class="game-specifications" *ngIf="platform.requirements.recommended">
             <h2>Specifications</h2>
@@ -147,6 +135,56 @@
                 <div class="recommended"></div>
             </div>
         </div>
+
+        <div class="similar-games" *ngIf="game.series.length > 0">
+            <h1>Similar games to {{game.name}}</h1>
+            <div class="row row-cols-1 row-cols-md-5 games">
+                <ng-container *ngFor="let game of game.series">
+                <div class="game-container">
+                    <div class="col game" (click)="openGameDetails(game.id)">
+                    <div class="card h-100 game-thumb-container">
+                        <img 
+                        *ngIf="game.background_image"
+                        src="{{game.background_image}}" 
+                        class="card-img-top game-thumbnail" 
+                        alt="thumbnail"
+                        
+                        >
+                        <p *ngIf="!game.background_image">No Image</p>
+                        <div class="card-body">
+                        <div class="name-rating">
+                            <h5 class="card-title game-name">{{game.name}}</h5>
+                            <h6 class="game-rating green" *ngIf="game.metacritic && game.metacritic >= 75">{{game.metacritic}}</h6>
+                            <h6 class="game-rating yellow" *ngIf="game.metacritic && game.metacritic < 75 && game.metacritic >= 50">{{game.metacritic}}</h6>
+                            <h6 class="game-rating orange" *ngIf="game.metacritic && game.metacritic < 50 && game.metacritic >= 25">{{game.metacritic}}</h6>
+                            <h6 class="game-rating red" *ngIf="game.metacritic && game.metacritic < 25">{{game.metacritic}}</h6>
+                        </div>
+        
+                        <div class="more-details">
+                            <div class="release-date">
+                            <p class="release-tag">Release date: </p>
+                            <p class="release-date">{{game.released | date: 'MMMM d, y'}}</p>
+                            </div>
+                            <div class="genre">
+                            <p class="genre-tag">Genres: </p>
+                            <div class="genre-name-container">
+                                <ng-container *ngFor="let genre of game.genres ; let last = last">
+                                <p class="genre-name" *ngIf="last">{{genre.name}}</p>
+                                <p class="genre-name" *ngIf="!last">{{genre.name}},</p>
+                                </ng-container>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </ng-container>
+            </div>
+        </div>
+        
         
     </div>
 
