@@ -2,7 +2,7 @@
   <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
   <mat-spinner style="top: 40%; left:50%;"></mat-spinner>
 </div>
-<nav class="navbar fixed-top navbar-expand-lg">
+<nav class="navbar fixed-top navbar-expand-lg" (scroll)="onWindowScroll();">
     <div class="container-fluid">
       <img class="logo" src="../assets/images/logo.png" alt="" routerLink="/">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

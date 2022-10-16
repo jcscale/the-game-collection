@@ -126,7 +126,7 @@
 
         </div>
 
-        <div class="game-platforms">
+        <!-- <div class="game-platforms">
             <h2>Platforms</h2>  
             <div class="platforms">
                 <img 
@@ -136,7 +136,7 @@
                 alt="{{gamePlatform.platform.slug}}"
             >
             </div>
-        </div>
+        </div> -->
         
         <div class="game-specifications" *ngIf="platform.requirements.recommended">
             <h2>Specifications</h2>
@@ -150,16 +150,55 @@
         
     </div>
 
-    <div class="developers">
-        <h4>Developers</h4>
-        <ul>
-            <li *ngFor="let developer of game.developers">
-                <div class="developers-profile">
-                    <div class="dev-image" *ngIf="developer.image != null"><img src="{{developer.image}}" alt=""></div>
-                    <div class="dev-name" *ngIf="developer.image != null">{{developer.name}}</div>
+    <div class="other-details">
+        <div class="game-platforms">
+            <h2>Platforms</h2>  
+            <div class="platforms row">
+                <div class="col-md-4 game-store" *ngFor="let gamePlatform of game.parent_platforms">
+                    <img 
+                        
+                        class="game-platoform"
+                        src="../../../assets/images/{{gamePlatform.platform.slug}}.svg" 
+                        alt="{{gamePlatform.platform.slug}}"
+                    >
                 </div>
-                <!-- <div class="separator" *ngIf="developer.image != null"></div> -->
-            </li>
-        </ul>
+                
+            </div>
+        </div>
+
+        <div class="stores">
+            <h4>Where to buy</h4>
+            <div class="row g-2"> 
+                <div class="col-6 store me-1 p-1" *ngFor="let store of game.stores">
+                    <a href="/{{store.store.domain}}">{{store.store.name}}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="developers" *ngIf="game.developers.length != 0">
+            <h4>Creators</h4>
+            <ul>
+                <li *ngFor="let developer of game.developers">
+                    <div class="developers-profile">
+                        <div class="dev-image" *ngIf="developer.image != null"><img src="{{developer.image}}" alt=""></div>
+                        <div class="dev-image" *ngIf="developer.image == null"><img src="../../../assets/images/profile.png" alt=""></div>
+                        <div class="name-position">
+                            <div class="dev-name">{{developer.name}}</div>
+                            <div class="dev-positions">
+                                <ul>
+                                    <li *ngFor="let position of developer.positions; let last = last" >
+                                        <p *ngIf="last">{{position.name}}</p>
+                                        <p *ngIf="!last">{{position.name}},</p>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
+
+    
 </div>

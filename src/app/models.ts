@@ -15,6 +15,7 @@ export interface Game {
     trailers: Array<Trailer>;
     platforms:any;
     developers:Array<Developers>;
+    stores:Array<Store>;
 }
 
 export interface APIResponse<T> {
@@ -58,4 +59,13 @@ interface Trailer {
 interface Developers {
     name:string,
     image:string,
+    positions: any
+}
+
+interface Store {
+    store: {
+        name:string,
+        domain:string
+    }
+    
 }

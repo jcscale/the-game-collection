@@ -9,18 +9,15 @@
   opacity: 0.8;
   background-color: black;
 }
-nav {
-  background-color: #2a2a2a;
-}
 nav .logo {
   width: 150px;
   margin-right: 50px;
 }
 nav .search-input {
   border-radius: 24px;
-  background-color: #121212;
+  background-color: #202020;
   color: white;
-  border: 1px solid #121212;
+  border: 1px solid #202020;
 }
 nav .nav-item a {
   color: white;
@@ -46,4 +43,7 @@ nav .nav-item a:hover::before {
 }
 nav .search-form {
   width: 70%;
+}
+.navbar-inverse {
+  background-color: #2a2a2a;
 }

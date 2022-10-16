@@ -17,6 +17,8 @@
   position: absolute;
   z-index: -1;
   opacity: 0.1;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
   width: 100%;
   bottom: 0%;
   top: 1%;
@@ -124,35 +126,95 @@
 .details .game-content .game-specifications .minimum {
   color: white;
 }
-.details .developers {
+.details .other-details {
   margin: 0px auto 0px 20px;
   width: 300px;
   background-color: #202020;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.details .developers h4 {
+.details .other-details h4 {
   color: white;
   text-align: center;
 }
-.details .developers li {
+.details .other-details .game-platforms h2 {
+  color: white;
+  font-size: 16px;
+  line-height: 25px;
+  letter-spacing: -0.2px;
+}
+.details .other-details .game-platforms .platforms {
+  background-color: #202020;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+}
+.details .other-details .game-platforms .platforms .game-store {
+  margin: 10px 0px;
+  text-align: center;
+}
+.details .other-details .game-platforms .platforms img {
+  width: 30px;
+  height: 30px;
+  margin: 0px 10px;
+  transition: all 0.2s ease-in-out;
+}
+.details .other-details .game-platforms .platforms img:hover {
+  transform: scale(1.5);
+}
+.details .other-details .stores .store {
+  display: flex;
+  border-radius: 6px;
+  background-color: hsla(0, 0%, 100%, 0.1);
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+  height: 50px;
+}
+.details .other-details .stores .store a {
+  text-decoration: none;
+  color: white;
+}
+.details .other-details .stores .store:hover {
+  background-color: rgba(255, 255, 255, 0.151);
+}
+.details .other-details .developers {
+  margin-top: 40px;
+}
+.details .other-details .developers li {
   margin: 10px 0px;
   list-style-type: none;
 }
-.details .developers li .developers-profile {
+.details .other-details .developers li .developers-profile {
   display: flex;
   align-items: center;
+  margin-bottom: 2piyhtkkjkhoippo -2y 8o 8oui 800900px;
 }
-.details .developers li .developers-profile .dev-image img {
-  width: 50px;
-  height: 50px;
+.details .other-details .developers li .developers-profile .dev-image img {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
-.details .developers li .developers-profile .dev-name {
+.details .other-details .developers li .developers-profile .name-position {
   margin-left: 10px;
+}
+.details .other-details .developers li .developers-profile .name-position .dev-name {
   color: white;
 }
-.details .developers li .separator {
+.details .other-details .developers li .developers-profile .name-position .dev-positions ul {
+  margin: none;
+}
+.details .other-details .developers li .developers-profile .name-position .dev-positions ul li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0px;
+}
+.details .other-details .developers li .developers-profile .name-position .dev-positions ul li p {
+  margin-right: 3px;
+  color: #8d8d8d;
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+.details .other-details .developers li .separator {
   width: 100%;
   border: 0.5px solid #5a5a5a;
 }

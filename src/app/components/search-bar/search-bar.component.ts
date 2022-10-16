@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Host, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoaderService } from '../loader/loader.service';
+import { HostListener } from '@angular/core';
+
 
 @Component({
   selector: 'app-search-bar',
@@ -19,4 +21,18 @@ export class SearchBarComponent implements OnInit {
     this.router.navigate(['search', form.value.search])
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    let element = document.querySelector('.navbar') as HTMLElement;
+    if (window.pageYOffset > element.clientHeight) {
+      element.classList.add('navbar-inverse');
+    } else {
+      element.classList.remove('navbar-inverse');
+    }
+  }
+
 }
+
+
+
+

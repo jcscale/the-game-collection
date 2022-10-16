@@ -23,6 +23,8 @@
         position: absolute;
         z-index: -1;
         opacity: 0.1;
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
         width: 100%;
         bottom: 0%;
         top: 1%;
@@ -167,48 +169,140 @@
         }
     }
 
-    .developers {
+    .other-details {
         margin: 0px auto 0px 20px;
         width: 300px;
         background-color: rgb(32, 32, 32);
         padding: 20px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
+        
         h4 {
             color: white;
             text-align: center;
         }
 
-        li {
-            margin: 10px 0px;
-            list-style-type: none;
+        .game-platforms {
+            h2 {
+                color: white;
+                font-size: 16px;
+                line-height: 25px;
+                letter-spacing: -0.2px;
+            }
 
-            .developers-profile {
-                display: flex;
-                align-items: center;
+            .platforms {
+                // display: flex;
+                // justify-content: center;
+                background-color: rgb(32, 32, 32);
+                padding: 20px 0px;
+                margin-bottom: 20px;
 
-                .dev-image {
-                    img {
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 50%;
-                    }
+                .game-store {
+                    margin: 10px 0px;
+                    text-align: center;
                 }
-    
-                .dev-name {
-                    margin-left: 10px;
+                
+                img {
+                    width: 30px;
+                    height: 30px;
+                    margin: 0px 10px;
+                    transition: all .2s ease-in-out;
+                }
+
+                img:hover {
+                    transform: scale(1.5);
+                }
+            }
+           
+        }
+
+        .stores {
+            
+            .store {
+                display: flex;
+                border-radius: 6px;
+                background-color: hsla(0,0%,100%,.1);
+                align-items: center;
+                justify-content: center;
+                width: 45%;
+                height: 50px;
+
+                a {
+                    text-decoration: none;
                     color: white;
                 }
             }
 
-            .separator {
-                width: 100%;
-                border: .5px solid rgb(90, 90, 90);
+            .store:hover {
+                background-color: rgba(255, 255, 255, 0.151);
             }
-
+            
         }
+
+        .developers {
+            margin-top: 40px;
+
+            li {
+                margin: 10px 0px;
+                list-style-type: none;
+    
+                .developers-profile {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 2piyhtkkjkhoippo7y-09uuijuuyi8o8oui800900px;
+    
+                    .dev-image {
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .name-position {
+                        margin-left: 10px;
+
+                        .dev-name {
+                            color: white;
+                        }
+
+                        .dev-positions {
+
+                            ul {
+                                margin: none;
+                                // max-height: 20px;
+
+                                li {
+                                    display: inline-block;
+                                    list-style-type: none;
+                                    margin: 0px;
+    
+                                    p {
+                                        margin-right: 3px;
+                                        color: rgb(141, 141, 141);
+                                        font-size: 12px;
+                                        margin-bottom: 0px;
+                                    }
+                                }
+                            }
+                            
+                           
+                        }
+                    }
         
+                    
+                }
+    
+                .separator {
+                    width: 100%;
+                    border: .5px solid rgb(90, 90, 90);
+                }
+    
+            }
+            
+        }
     }
+
+    
 }
 
 

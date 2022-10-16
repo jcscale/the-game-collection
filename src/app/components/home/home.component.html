@@ -24,28 +24,49 @@
   </div>
 
     <div class="row row-cols-1 row-cols-md-5 games">
-      <ng-container *ngFor="let game of games | paginate: { itemsPerPage: 20, currentPage: p, totalItems: total }">
-        <div class="col game" (click)="openGameDetails(game.id)">
-          <div class="card h-100 game-thumb-container">
-            <img 
-              *ngIf="game.background_image"
-              src="{{game.background_image}}" 
-              class="card-img-top game-thumbnail" 
-              alt="thumbnail"
-              
-            >
-            <p *ngIf="!game.background_image">No Image</p>
-            <div class="card-body">
-              <h5 class="card-title game-name">{{game.name}}</h5>
-              <div class="genre">
-                <ng-container *ngFor="let genre of game.genres">
-                  <p>{{genre.name}}</p>
-                </ng-container>
+        <ng-container *ngFor="let game of games | paginate: { itemsPerPage: 20, currentPage: p, totalItems: total }">
+          <div class="game-container">
+            <div class="col game" (click)="openGameDetails(game.id)">
+              <div class="card h-100 game-thumb-container">
+                <img 
+                  *ngIf="game.background_image"
+                  src="{{game.background_image}}" 
+                  class="card-img-top game-thumbnail" 
+                  alt="thumbnail"
+                  
+                >
+                <p *ngIf="!game.background_image">No Image</p>
+                <div class="card-body">
+                  <div class="name-rating">
+                    <h5 class="card-title game-name">{{game.name}}</h5>
+                    <h6 class="game-rating green" *ngIf="game.metacritic && game.metacritic >= 75">{{game.metacritic}}</h6>
+                    <h6 class="game-rating yellow" *ngIf="game.metacritic && game.metacritic < 75 && game.metacritic >= 50">{{game.metacritic}}</h6>
+                    <h6 class="game-rating orange" *ngIf="game.metacritic && game.metacritic < 50 && game.metacritic >= 25">{{game.metacritic}}</h6>
+                    <h6 class="game-rating red" *ngIf="game.metacritic && game.metacritic < 25">{{game.metacritic}}</h6>
+                  </div>
+
+                  <div class="more-details">
+                    <div class="release-date">
+                      <p class="release-tag">Release date: </p>
+                      <p class="release-date">{{game.released | date: 'MMMM d, y'}}</p>
+                    </div>
+                    <div class="genre">
+                      <p class="genre-tag">Genres: </p>
+                      <div class="genre-name-container">
+                        <ng-container *ngFor="let genre of game.genres ; let last = last">
+                          <p class="genre-name" *ngIf="last">{{genre.name}}</p>
+                          <p class="genre-name" *ngIf="!last">{{genre.name}},</p>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </ng-container>
+        </ng-container>
     </div>
 
     
