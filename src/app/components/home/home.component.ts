@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe((gameList: APIResponse<Game>) => {
         this.games = gameList.results;
         console.log(gameList)
-        this.total = gameList.count
+        this.total = gameList.count / 36
         this.paginate = gameList.next
       })
   }
