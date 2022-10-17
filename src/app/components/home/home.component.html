@@ -57,7 +57,13 @@
                   alt="thumbnail"
                   
                 >
-                <p *ngIf="!game.background_image">No Image</p>
+                <img 
+                  *ngIf="!game.background_image"
+                  src="../../../assets/images/no-image.png" 
+                  class="card-img-top game-thumbnail" 
+                  alt="thumbnail"
+                  
+                >
                 <div class="card-body">
                   <div class="name-rating">
                     <h5 class="card-title game-name">{{game.name}}</h5>
